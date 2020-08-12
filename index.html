@@ -1,53 +1,17 @@
 <html>
 <head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N2PKKCD');</script>
 <title></title>
 <meta name="robots" content="noindex">
 <style>
-    * {margin: 0; padding: 0;}
-    body {background: white;}
-    canvas {display:none;position:absolute;top:0;left:0;}
-	  img.logo {position:absolute;top:25%;margin:0 5%;opacity:0.5;display:none;}
+* {margin: 0; padding: 0;}
+body {background: white;}
+canvas {display:none;position:absolute;top:0;left:0;}
+img.logo {position:absolute;top:25%;margin:0 5%;opacity:0.5;display:none;}
 </style>
 </head>
 <body>
-    <canvas id="c"></canvas>
-    <img class="logo" src="logo.svg" alt="">
+<canvas id="c"></canvas>
+<img class="logo" src="logo.svg" alt="">
 </body>
-<script>
-    var c = document.getElementById("c");
-    var ctx = c.getContext("2d");
-
-    //making the canvas full screen
-    c.height = window.innerHeight;
-    c.width = window.innerWidth;
-
-    var english = "6D61696C656E636D61696C656E636D61696C656E636D61696C656E636D61696C656E63";
-    //converting the string into an array of single characters
-    english = english.split("");
-
-    var font_size = 18;
-    var columns = c.width/font_size; //number of columns for the rain
-    var drops = [];
-    for(var x = 0; x < columns; x++)
-        drops[x] = 1; 
-
-    //drawing the characters
-    function draw()
-    {
-        ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
-        ctx.fillRect(0, 0, c.width, c.height);	
-        ctx.fillStyle = "#333"; // text
-        ctx.font = font_size + "px arial";
-        //looping over drops
-        for(var i = 0; i < drops.length; i++)
-        {
-	        var text = english[Math.floor(Math.random()*english.length)];
-	        ctx.fillText(text, i*font_size, drops[i]*font_size);
-	        if(drops[i]*font_size > c.height && Math.random() > 0.975)
-		        drops[i] = 0;
-	        drops[i]++;
-        }
-    }
-    setInterval(draw, 33);
-</script>
 </html>
